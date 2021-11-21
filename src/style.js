@@ -32,7 +32,8 @@ export const FormWrapper = styled.div`
     background: #FFFFFF;
     width:80%;
     align-self:center;
-    border-radius:8px;
+    border-top-left-radius: 8px 8px;
+    border-top-right-radius: 8px 8px;
 `;
 
 export const ItemsContainer = styled.div`
@@ -75,7 +76,8 @@ export const  ButtonWrapper = styled.div`
     width:80%;
     align-self:center;
     background: #16295A;
-    border-radius:8px;
+    border-bottom-left-radius: 8px 8px;
+    border-bottom-right-radius: 8px 8px;
 `
 
 export const  ActionButton = styled.button`
