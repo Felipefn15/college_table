@@ -1,9 +1,74 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+render(<App />);
+const mainContainer = screen.getByTestId("mainContainer");
+const showModalButton = screen.getByTestId("showModalButton");
+const tableContainer = screen.getByTestId("tableContainer");
+const tableHead = screen.getByTestId("tableHead");
+const tableHeadRow = screen.getByTestId("tableHeadRow");
+const tableHeadCellFirstName = screen.getByTestId("tableHeadCellFirstName");
+const tableHeadCellLastName = screen.getByTestId("tableHeadCellLastName");
+const tableHeadCellDateBirth = screen.getByTestId("tableHeadCellDateBirth");
+const tableHeadCellCourse = screen.getByTestId("tableHeadCellCourse");
+const tableHeadCellHours = screen.getByTestId("tableHeadCellHours");
+const tableHeadCellPrice = screen.getByTestId("tableHeadCellPrice");
+const tableBody = screen.getByTestId("tableBody");
+// const tableBodyRowFirst = screen.getByTestId("tableBodyRow-0");
+// const tableBodyCellFirsName = screen.getByTestId("tableBodyCellFirsName-0");
+// const tableBodyCellLastName = screen.getByTestId("tableBodyCellLastName-0");
+// const tableBodyCellDateBirth = screen.getByTestId("tableBodyCellDateBirth-0");
+// const tableBodyCellCourse = screen.getByTestId("tableBodyCellCourse-0");
+// const tableBodyCellHours = screen.getByTestId("tableBodyCellHours-0");
+// const tableBodyCellPrice = screen.getByTestId("tableBodyCellPrice-0");
+// const tableBodyCellEditButton = screen.getByTestId("tableBodyCellEditButton-0");
+// const tableBodyCellDeleteButton = screen.getByTestId("tableBodyCellDeleteButton-0");
+
+test('renders empty table', () => {
+  expect(mainContainer).toBeInTheDocument();
+  expect(showModalButton).toBeInTheDocument();
+  expect(tableContainer).toBeInTheDocument();
+  expect(tableHead).toBeInTheDocument();
+  expect(tableHeadRow).toBeInTheDocument();
+  expect(tableHeadCellFirstName).toBeInTheDocument();
+  expect(tableHeadCellLastName).toBeInTheDocument();
+  expect(tableHeadCellDateBirth).toBeInTheDocument();
+  expect(tableHeadCellCourse).toBeInTheDocument();
+  expect(tableHeadCellHours).toBeInTheDocument();
+  expect(tableHeadCellPrice).toBeInTheDocument();
+  expect(tableBody).toBeInTheDocument();
 });
+
+// test('adding student', async () => {
+//   // const modalContainer = screen.getByTestId("modalContainer");
+//   // const formWrapper = screen.getByTestId("formWrapper");
+//   // const titleModal = screen.getByTestId("titleModal");
+//   // const inputsContainer = screen.getByTestId("inputsContainer");
+//   // const firstNameLable = screen.getByTestId("firstNameLable");
+//   // const firstNameInput = screen.getByTestId("firstNameInput");
+//   // const lastNameLable = screen.getByTestId("lastNameLable");
+//   // const lastNameInput = screen.getByTestId("lastNameInput");
+//   // const dateBirthLable = screen.getByTestId("dateBirthLable");
+//   // const dateBirthInput = screen.getByTestId("dateBirthInput");
+//   // const courseLable = screen.getByTestId("courseLable");
+//   // const courseInput = screen.getByTestId("courseInput");
+//   // const hoursLable = screen.getByTestId("hoursLable");
+//   // const hoursInput = screen.getByTestId("hoursInput");
+//   // const priceLabel = screen.getByTestId("priceLabel");
+//   // const priceInput = screen.getByTestId("priceInput");
+//   // const addStudentButton = screen.getByTestId("addStudentButton");
+
+//   await waitFor(() => screen.getByTestId("modalContainer"));
+//   // await expect(formWrapper).toBeInTheDocument();
+//   // await expect(titleModal).toBeInTheDocument();
+//   // await expect(inputsContainer).toBeInTheDocument();
+//   // await expect(firstNameLable).toBeInTheDocument();
+//   // await expect(firstNameInput).toBeInTheDocument();
+//   // await expect(lastNameLable).toBeInTheDocument();
+//   // await expect(dateBirthLable).toBeInTheDocument();
+//   // await expect(courseLable).toBeInTheDocument();
+//   // await expect(hoursLable).toBeInTheDocument();
+//   // await expect(priceLabel).toBeInTheDocument();
+//   // await expect(addStudentButton).toBeInTheDocument();
+// });
