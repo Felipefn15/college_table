@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MainContainer, ButtonContainer, TableWrapper, ModalContainer, FormWrapper, ItemWrapper, Title, Label, ItemsContainer, ButtonWrapper,ActionButton, CloseButton } from './style.js';
+import { MainContainer, ButtonContainer, TableWrapper, ModalContainer, FormWrapper, ItemWrapper, Title, Label, ItemsContainer, ButtonWrapper, ActionButton, CloseButton } from './style.js';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
@@ -50,19 +50,19 @@ function App() {
   }));
 
   const insertStudent = (student: Student) => {
-    
+
     setStudents([...students, student])
     setShowModal(false)
   }
 
-  const setDeleteStudent = (index : number) => {
+  const setDeleteStudent = (index: number) => {
     const newStudents = [...students]
     newStudents.splice(index, 1)
     setStudents(newStudents)
   }
 
   const studentModal = () => {
-    let student : Student = studentEdit.firstName !== "" ? studentEdit : {
+    let student: Student = studentEdit.firstName !== "" ? studentEdit : {
       firstName: "",
       lastName: "",
       dateBirth: "",
@@ -76,52 +76,53 @@ function App() {
       >
         <ModalContainer data-testid="modalContainer">
           <FormWrapper data-testid="formWrapper">
-            <div style={{display:"flex", justifyContent:"space-between", width:"100%"}}>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
               <Title data-testid="titleModal">Add Student</Title>
-              <CloseButton onClick={()=>setShowModal(false)}>X</CloseButton>
+              <CloseButton onClick={() => setShowModal(false)}>X</CloseButton>
             </div>
             <ItemsContainer data-testid="inputsContainer">
               <ItemWrapper>
                 <Label data-testid="firstNameLable">
                   First Name
                 </Label>
-                <TextField data-testid="firstNameInput" defaultValue={student.firstName} type="text" id="firstNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.firstName = e.target.value}}/>
+                <TextField inputProps={{ "data-testid": "firstNameInput" }} defaultValue={student.firstName} type="text" id="firstNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.firstName = e.target.value }} />
               </ItemWrapper>
               <ItemWrapper>
                 <Label data-testid="lastNameLable">
                   Last Name
                 </Label>
-                <TextField data-testid="lastNameInput" defaultValue={student.lastName} type="text" id="lastNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.lastName = e.target.value}}/>
+                <TextField inputProps={{ "data-testid": "lastNameInput" }} defaultValue={student.lastName} type="text" id="lastNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.lastName = e.target.value }} />
               </ItemWrapper>
               <ItemWrapper>
                 <Label data-testid="dateBirthLable">
                   Date of Birth
                 </Label>
-                <TextField data-testid="dateBirthInput" defaultValue={student.dateBirth} type="date" id="dateBirthInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.dateBirth = e.target.value}}/>
+                <TextField inputProps={{ "data-testid": "dateBirthInput" }} defaultValue={student.dateBirth} type="date" id="dateBirthInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.dateBirth = e.target.value }} />
+
               </ItemWrapper>
               <ItemWrapper>
                 <Label data-testid="courseLable">
                   Course Name
                 </Label>
-                <TextField data-testid="courseInput" defaultValue={student.course} type="text" id="courseNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.course = e.target.value}}/>
+                <TextField inputProps={{ "data-testid": "courseInput" }} defaultValue={student.course} type="text" id="courseNameInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.course = e.target.value }} />
               </ItemWrapper>
               <ItemWrapper>
                 <Label data-testid="hoursLable">
                   Hours
                 </Label>
-                <TextField data-testid="hoursInput" defaultValue={student.hours} type="number" id="hoursInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.hours = e.target.value}}/>
+                <TextField inputProps={{ "data-testid": "hoursInput" }} defaultValue={student.hours} type="number" id="hoursInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.hours = e.target.value }} />
               </ItemWrapper>
               <ItemWrapper>
                 <Label data-testid="priceLabel">
                   Price €
                 </Label>
-                <TextField data-testid="priceInput" defaultValue={student.price} type="number" id="priceInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e)=>{student.price = parseFloat(e.target.value)}}/>
+                <TextField inputProps={{ "data-testid": "priceInput" }} defaultValue={student.price} type="number" id="priceInput" variant="outlined" style={{ borderRadius: "6px" }} onChange={(e) => { student.price = parseFloat(e.target.value) }} />
               </ItemWrapper>
             </ItemsContainer>
           </FormWrapper>
-            <ButtonWrapper>
-              <Button data-testid="addStudentButton" variant="contained" onClick={() => studentEdit.firstName !== "" ? setShowModal(false):insertStudent(student)}>Save</Button>
-            </ButtonWrapper>
+          <ButtonWrapper>
+            <Button data-testid="addStudentButton" variant="contained" onClick={() => studentEdit.firstName !== "" ? setShowModal(false) : insertStudent(student)}>Save</Button>
+          </ButtonWrapper>
         </ModalContainer>
       </Modal >
     )
@@ -148,7 +149,7 @@ function App() {
               </StyledTableRow>
             </TableHead>
             <TableBody data-testid="tableBody">
-              {students.map((student,index) => (
+              {students.map((student, index) => (
                 <StyledTableRow
                   key={index}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -164,11 +165,11 @@ function App() {
                   <StyledTableCell data-testid={`tableBodyCellCourse-${index}`}>{student.course}</StyledTableCell>
                   <StyledTableCell data-testid={`tableBodyCellHours-${index}`}>{student.hours}</StyledTableCell>
                   <StyledTableCell data-testid={`tableBodyCellPrice-${index}`}>{student.price}</StyledTableCell>
-                  <StyledTableCell data-testid={`tableBodyCellEditButton-${index}`}><ActionButton onClick={()=>{
+                  <StyledTableCell data-testid={`tableBodyCellEditButton-${index}`}><ActionButton onClick={() => {
                     setStudentEdit(student)
                     setShowModal(true)
                   }}>Edit</ActionButton></StyledTableCell>
-                  <StyledTableCell data-testid={`tableBodyCellDeleteButton-${index}`}><ActionButton onClick={()=>setDeleteStudent(index)}>Delete</ActionButton></StyledTableCell>
+                  <StyledTableCell><ActionButton data-testid={`tableBodyCellDeleteButton-${index}`} onClick={() => setDeleteStudent(index)}>Delete</ActionButton></StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
